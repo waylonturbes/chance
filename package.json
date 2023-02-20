@@ -4,17 +4,30 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "TAMAGUI_TARGET=native expo start --android",
+    "ios": "TAMAGUI_TARGET=native expo start --ios",
+    "web": "TAMAGUI_TARGET=web expo start --web"
   },
   "dependencies": {
+    "@expo/webpack-config": "^0.17.2",
+    "@tamagui/animations-react-native": "^1.5.16",
+    "@tamagui/babel-plugin": "^1.5.16",
+    "@tamagui/config": "^1.5.16",
+    "@tamagui/font-inter": "^1.5.16",
+    "@tamagui/shorthands": "^1.5.16",
+    "@tamagui/theme-base": "^1.5.16",
+    "@tamagui/themes": "^1.5.16",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "expo": "~47.0.12",
+    "expo-font": "^11.0.1",
+    "expo-linear-gradient": "~12.0.1",
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react-dom": "^18.2.0",
     "react-native": "0.70.5",
-    "react-native-web": "~0.18.9"
+    "react-native-reanimated": "^2.14.4",
+    "react-native-web": "^0.18.12",
+    "tamagui": "^1.5.16"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
