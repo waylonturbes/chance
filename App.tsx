@@ -1,9 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 import { Button, TamaguiProvider, Theme, YStack } from "tamagui";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 
 import config from "./tamagui.config";
+import { BottomNavigator } from "./components/BottomNavigator";
 
 export default function App() {
   const colorScheme = useColorScheme();
@@ -19,17 +21,16 @@ export default function App() {
   return (
     <TamaguiProvider config={config}>
       <Theme name={colorScheme === "dark" ? "dark" : "light"}>
-        <YStack
-          f={1}
-          jc="center"
-          ai="center"
-          backgroundColor={"$backgroundSoft"}
-        >
-          <Button color="$color" jc="center">
-            {colorScheme}
-          </Button>
-
-          <StatusBar style="auto" />
+        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+        <YStack flex={1} backgroundColor={"$backgroundSoft"}>
+          <YStack flex={1} justifyContent="center" alignItems="center">
+            <SafeAreaView>
+              <Button color="$color" justifyContent="center">
+                {colorScheme}
+              </Button>
+            </SafeAreaView>
+          </YStack>
+          <BottomNavigator />
         </YStack>
       </Theme>
     </TamaguiProvider>
