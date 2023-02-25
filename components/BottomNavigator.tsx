@@ -32,6 +32,7 @@ export function BottomNavigator() {
       p="$2"
       borderTopLeftRadius="$5"
       borderTopRightRadius="$5"
+      elevation="$1"
     >
       {bottomNavigatorButtons.map((btnProps) =>
         createElement(BottomNavigatorButton, btnProps)

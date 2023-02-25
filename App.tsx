@@ -1,14 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
-import { Button, TamaguiProvider, Theme, YStack } from "tamagui";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { TamaguiProvider, Theme } from "tamagui";
 import { useFonts } from "expo-font";
 
 import config from "./tamagui.config";
-import { BottomNavigator } from "./components/BottomNavigator";
+import { useThemeStore } from "./stores";
+import { AppLayout } from "./components/AppLayout";
 
 export default function App() {
   const colorScheme = useColorScheme();
+  const theme = useThemeStore((state) => state.theme);
+  const colorMode = useThemeStore((state) => state.colorMode);
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
@@ -22,16 +24,7 @@ export default function App() {
     <TamaguiProvider config={config}>
       <Theme name={colorScheme === "dark" ? "dark" : "light"}>
         <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-        <YStack flex={1} backgroundColor={"$backgroundSoft"}>
-          <YStack flex={1} justifyContent="center" alignItems="center">
-            <SafeAreaView>
-              <Button color="$color" justifyContent="center">
-                {colorScheme}
-              </Button>
-            </SafeAreaView>
-          </YStack>
-          <BottomNavigator />
-        </YStack>
+        <AppLayout></AppLayout>
       </Theme>
     </TamaguiProvider>
   );
