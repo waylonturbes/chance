@@ -1,15 +1,16 @@
+import { Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { useColorScheme } from "react-native";
 import { TamaguiProvider, Theme } from "tamagui";
 import { useFonts } from "expo-font";
+import { useColorScheme } from "react-native";
 
-import config from "./tamagui.config";
-import { useThemeStore } from "./stores";
-import { AppLayout } from "./components/AppLayout";
+import config from "../tamagui.config";
+import { useThemeStore } from "../stores";
+import { TabsProvider } from "./TabsProvider";
 
-export default function App() {
+export function AppShell() {
   const colorScheme = useColorScheme();
-  const theme = useThemeStore((state) => state.theme);
+  const currentAppTheme = useThemeStore((state) => state.theme);
   const colorMode = useThemeStore((state) => state.colorMode);
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
@@ -24,7 +25,7 @@ export default function App() {
     <TamaguiProvider config={config}>
       <Theme name={colorScheme === "dark" ? "dark" : "light"}>
         <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-        <AppLayout></AppLayout>
+        <TabsProvider />
       </Theme>
     </TamaguiProvider>
   );

@@ -30,8 +30,8 @@ export function BottomNavigator() {
       alignItems="center"
       bg="$backgroundStrong"
       p="$2"
-      borderTopLeftRadius="$5"
-      borderTopRightRadius="$5"
+      // borderTopLeftRadius="$5"
+      // borderTopRightRadius="$5"
       elevation="$1"
     >
       {bottomNavigatorButtons.map((btnProps) =>
@@ -51,7 +51,7 @@ function BottomNavigatorButton({ Icon, label }: BottomNavigatorButtonProps) {
   return (
     <Button
       size="$5"
-      h="$6"
+      h="$5"
       flex={1}
       theme="blue"
       icon={Icon}
